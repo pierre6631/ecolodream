@@ -1,0 +1,39 @@
+#ecolo{
+    background-color: #CF8B0A;
+}
+
+li{
+    display: inline;
+    padding: 1rem;
+    margin-left: 1rem;
+}
+
+.header{
+    display: flex;
+    background-color: #137E09;
+    position: relative;
+}
+
+.connect{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.menu{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.image{
+    padding: 1rem;
+}
+
+
+a:link, a:visited{
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    text-align: center;
+}
