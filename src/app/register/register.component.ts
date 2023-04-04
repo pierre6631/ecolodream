@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent {
+export class RegisterComponent {
 
   firstname = {name: "firstname", placeholder: "Prénom", type: "text"};
   email = {name: "email", placeholder: "Email", type: "email"};

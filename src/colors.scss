@@ -1,0 +1,24 @@
+:root {
+    --green: rgb(19, 126, 9);
+    --yellow: rgb(227, 137, 5);
+    --brown: rgb(128, 73, 10);
+}
+
+.bg-green{
+    background-color: var(--green);
+}
+.green{
+    color: var(--green);
+}
+.bg-yellow{
+    background-color: var(--yellow);
+}
+.yellow{
+    color: var(--yellow);
+}
+.bg-brown{
+    background-color: var(--brown);
+}
+.brown{
+    color: var(--brown);
+}

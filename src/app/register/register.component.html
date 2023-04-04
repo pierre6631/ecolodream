@@ -1,17 +1,22 @@
 <app-card class="cardCenter">
-    <div class="form-group w-50">
+    <div class="form-group w-40">
         <app-input [type]="firstname.type" [name]="firstname.name" [placeholder]="firstname.placeholder"></app-input>
     </div>
-    <div class="form-group w-50">
+    <div class="form-group w-40">
         <app-input [type]="lastname.type" [name]="lastname.name" [placeholder]="lastname.placeholder"></app-input>
     </div>
     <div class="form-group w-100">
         <app-input [type]="email.type" [name]="email.name" [placeholder]="email.placeholder"></app-input>
     </div>
-    <div class="form-group w-50">
+    <div class="form-group w-40">
         <app-input [type]="password.type" [name]="password.name" [placeholder]="password.placeholder"></app-input>
     </div>
-    <div class="form-group w-50">
+    <div class="form-group w-40">
         <app-input [type]="passwordConfirm.type" [name]="passwordConfirm.name" [placeholder]="passwordConfirm.placeholder"></app-input>
-    </div>      
-</app-card>
+    </div>    
+
+    <app-button>
+        Inscription
+    </app-button>
+
+</app-card> 
