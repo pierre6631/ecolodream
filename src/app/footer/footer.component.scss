@@ -1,0 +1,53 @@
+li{
+    display: inline;
+    padding: 1rem;
+    margin-left: 1rem;
+}
+
+.footer{
+    display: flex;
+    background-color: #80490A;
+    position: relative;
+    justify-content: center;
+}
+
+p{
+    color: white;
+    font-weight: bold;
+}
+
+.info{
+    position: absolute;
+    bottom: 1rem;
+    right: 0;
+}
+
+
+.image{
+    padding: 1rem;
+    position: absolute;
+    left: 0;
+}
+
+.link{
+    text-align: center;
+}
+
+
+a:link, a:visited{
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    text-align: center;
+}
+
+#link{
+    padding-top: 1px;
+}
+
+ul{
+    display: inline-block;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+}
+
