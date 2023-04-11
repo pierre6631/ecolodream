@@ -1,0 +1,15 @@
+.form-line{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+.form-action{
+    width: 100%;
+    text-align: center;
+}
+.form-error{
+    width: 100%;
+    color: red;
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { confirmPwd } from './confirmPwd';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,50 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
-  firstname = {name: "firstname", placeholder: "Prénom", type: "text"};
-  email = {name: "email", placeholder: "Email", type: "email"};
-  lastname = {name: "lastname", placeholder: "Nom", type: "text"}
-  password = {name: "password", placeholder: "Mot de passe", type: "password"}
-  passwordConfirm = {name: "password_confirm", placeholder: "Confirmer", type: "password"}
+  form = this.fb.group({
+    firstname: ['', [Validators.required]],
+    lastname: ['', [Validators.required]],
+    email: [ '', 
+    {
+        validators: [
+            Validators.required, 
+            Validators.email
+        ],
+        updateOn: 'blur'
+    }],
+    password: ['', 
+    {
+      validators: [
+        Validators.required, 
+        Validators.minLength(8)
+      ],
+      updateOn: 'blur'
+    }],
+
+    passwordConfirm: ['', {validators:[Validators.required, confirmPwd('password')], updateOn: 'blur'}]
+  });
+
+  constructor(private fb: FormBuilder) {}
+
+  get firstname() {
+    return this.form.controls['firstname'];
+  }
+  get lastname() {
+    return this.form.controls['lastname'];
+  }
+  get email() {
+    return this.form.controls['email'];
+  }
+  get password() {
+      return this.form.controls['password'];
+  }
+  get passwordConfirm() {
+    return this.form.controls['passwordConfirm'];
+  }
+  onSubmit(): void {
+    console.log('ff');  
+    console.log(this.form.value);  
+  }
 }
+
+
