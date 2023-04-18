@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     EcoloComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

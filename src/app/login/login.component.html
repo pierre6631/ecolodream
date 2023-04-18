@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+    <app-card>
+        <div class="form-line">
+            <div class="form-group">
+                <input class="form-input" type="email" formControlName="email" placeholder="E-mail">
+            </div>
+        </div>
+        <div class="form-line">
+            <div class="form-group">
+                <input class="form-input" type="password" formControlName="password" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-action">
+            <app-button color="green" (click)="onSubmit()">Inscription</app-button>
+        </div>
+    </app-card>
+</form>
