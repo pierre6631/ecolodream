@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "colors.scss";
-
-.w-100{
+@import "form.scss";
+body{
+    margin: 0;
+}
+.form-input{
+    padding: 1em;
+    border-radius: 25px;
     width: 100%;
+    border: 1px solid var(--green);
 }
-.w-40{
-    width: 40%;
-}
+

@@ -1,22 +1,51 @@
-<app-card class="cardCenter">
-    <div class="form-group w-40">
-        <app-input [type]="firstname.type" [name]="firstname.name" [placeholder]="firstname.placeholder"></app-input>
-    </div>
-    <div class="form-group w-40">
-        <app-input [type]="lastname.type" [name]="lastname.name" [placeholder]="lastname.placeholder"></app-input>
-    </div>
-    <div class="form-group w-100">
-        <app-input [type]="email.type" [name]="email.name" [placeholder]="email.placeholder"></app-input>
-    </div>
-    <div class="form-group w-40">
-        <app-input [type]="password.type" [name]="password.name" [placeholder]="password.placeholder"></app-input>
-    </div>
-    <div class="form-group w-40">
-        <app-input [type]="passwordConfirm.type" [name]="passwordConfirm.name" [placeholder]="passwordConfirm.placeholder"></app-input>
-    </div>    
+<form [formGroup]="form">
+    <app-card>
+        <div class="form-line">
+            <div class="form-group">
+                <input class="form-input" type="text" formControlName="firstname" placeholder="Prénom">
+                <div class="form-error" *ngIf="firstname.errors?.['required'] && formSubmited">
+                    Le prénom est requis
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" formControlName="lastname" placeholder="Nom">
+                <div class="form-error" *ngIf="lastname.errors?.['required'] && formSubmited">
+                    Le nom est requis
+                </div>
+            </div>
+        </div>
+        <div class="form-line">
+            <div class="form-group">
+                <input class="form-input" type="email" formControlName="email" placeholder="E-mail">
+                <div class="form-error" *ngIf="email.errors?.['required'] && formSubmited">
+                    L'email est requis
+                </div>
+                <div class="form-error" *ngIf="email.errors?.['email']">
+                    L'email n'est pas valide.
+                </div>
+            </div>
+        </div>
+        <div class="form-line">
+            <div class="form-group">
+                <input class="form-input" type="password" formControlName="password" placeholder="Password">
+                <div class="form-error" *ngIf="password.errors?.['required'] && formSubmited">
+                    Le mot de passe est requis
+                </div>
+                <div class="form-error" *ngIf="password.errors?.['minlength']">
+                    Le mot de passe doit faire plus de 8 caractère.
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="password" formControlName="passwordConfirm" placeholder="Confirmer">
+                <div  class="form-error" *ngIf="passwordConfirm.errors?.['confirmPwd']">
+                    Les mots de passe ne correspondent pas.
+                </div>
+            </div>
+        </div>
+        <div class="form-action">
+            <app-button color="green" (click)="onSubmit()">Inscription</app-button>
+        </div>
+        <p>Form Status: {{ form.status }}</p>
+    </app-card>
+</form>
 
-    <app-button>
-        Inscription
-    </app-button>
-
-</app-card> 

@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { EcoloComponent } from './ecolo/ecolo.component';
 import { SharedModule } from './shared/shared.module';
 import { RegisterComponent } from './register/register.component';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
