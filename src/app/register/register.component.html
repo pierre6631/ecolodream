@@ -3,14 +3,23 @@
         <div class="form-line">
             <div class="form-group">
                 <input class="form-input" type="text" formControlName="firstname" placeholder="Prénom">
+                <div class="form-error" *ngIf="firstname.errors?.['required'] && formSubmited">
+                    Le prénom est requis
+                </div>
             </div>
             <div class="form-group">
                 <input class="form-input" type="text" formControlName="lastname" placeholder="Nom">
+                <div class="form-error" *ngIf="lastname.errors?.['required'] && formSubmited">
+                    Le nom est requis
+                </div>
             </div>
         </div>
         <div class="form-line">
             <div class="form-group">
                 <input class="form-input" type="email" formControlName="email" placeholder="E-mail">
+                <div class="form-error" *ngIf="email.errors?.['required'] && formSubmited">
+                    L'email est requis
+                </div>
                 <div class="form-error" *ngIf="email.errors?.['email']">
                     L'email n'est pas valide.
                 </div>
@@ -19,6 +28,9 @@
         <div class="form-line">
             <div class="form-group">
                 <input class="form-input" type="password" formControlName="password" placeholder="Password">
+                <div class="form-error" *ngIf="password.errors?.['required'] && formSubmited">
+                    Le mot de passe est requis
+                </div>
                 <div class="form-error" *ngIf="password.errors?.['minlength']">
                     Le mot de passe doit faire plus de 8 caractère.
                 </div>

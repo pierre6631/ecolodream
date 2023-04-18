@@ -9,8 +9,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class UserService {
 
   usersUrl = "http://localhost:8383/api";
-  user: IUser = [];
-  public user$: BehaviorSubject<IUser> = new BehaviorSubject<IUser>(this.user);
+  user: IUser | null = null;
+  public user$: BehaviorSubject<IUser | null> = new BehaviorSubject<IUser | null>(this.user);
+  
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
@@ -21,14 +22,16 @@ export class UserService {
   }
 
   constructor(private http: HttpClient) {
-    this.user$ = new BehaviorSubject<IUser>(this.user);
+    this.user$ = new BehaviorSubject<IUser | null>(this.user);
   }
 
   
-  login(){
-    return this.http.post<IUser>(this.usersUrl + "/auth/login", {}).pipe(
+  login(email:string, password:string){
+    return this.http.post<IUser>(this.usersUrl + "/auth/login", {
+      email, password
+    }).pipe(
       tap((user:IUser) =>{
-        this.user$ = new BehaviorSubject<IUser>(user);
+        this.user$ = new BehaviorSubject<IUser | null>(user);
       }),
     );
   }
@@ -50,5 +53,4 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-  
 }

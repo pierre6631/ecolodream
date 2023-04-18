@@ -3,13 +3,15 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { confirmPwd } from './confirmPwd';
 import { UserService } from '../user.service';
 import { IUser } from '../iuser';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+
+  formSubmited = false;
 
   form = this.fb.group({
     firstname: ['', [Validators.required]],
@@ -33,9 +35,9 @@ export class RegisterComponent {
 
     passwordConfirm: ['', {validators:[Validators.required, confirmPwd('password')], updateOn: 'blur'}]
   });
-  user: {} | undefined;
+  user: IUser | undefined;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   get firstname() {
     return this.form.controls['firstname'];
@@ -54,11 +56,16 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
+    this.formSubmited = true;
+
     if(this.form.valid){
       this.userService.addUser(
         /*@ts-ignore*/
         this.form.value.lastname, this.form.value.firstname, this.form.value.email, this.form.value.password
-        ).subscribe((data: IUser) => this.user = { ...data });
+        );
+      /*@ts-ignore*/
+      this.userService.login(this.form.value.email, this.form.value.password).subscribe((data: IUser) => this.user = { ...data });
+      this.router.navigate(['/welcome']);
     }
   }
 }
