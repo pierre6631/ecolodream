@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="form-action">
-            <app-button color="green">Inscription</app-button>
+            <app-button color="green" (click)="onSubmit()">Inscription</app-button>
         </div>
         <p>Form Status: {{ form.status }}</p>
     </app-card>
