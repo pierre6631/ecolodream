@@ -10,6 +10,9 @@
                 <input class="form-input" type="password" formControlName="password" placeholder="Password">
             </div>
         </div>
+        <div  class="form-error" *ngIf="error">
+            {{error}}
+        </div>
         <div class="form-action">
             <app-button color="green" (click)="onSubmit()">Inscription</app-button>
         </div>

@@ -17,6 +17,8 @@ export class LoginComponent {
   });
   user: IUser | undefined;
 
+  error: string | null = null;
+
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   get email() {
@@ -29,8 +31,21 @@ export class LoginComponent {
   onSubmit(): void {
     if(this.form.valid){
       /*@ts-ignore*/
-      this.userService.login(this.form.value.email, this.form.value.password).subscribe((data: IUser) => this.user = { ...data });
-      this.router.navigate(['/welcome']);
+      this.userService.login(this.form.value.email, this.form.value.password).subscribe((data: IUser) => {
+        console.log(data);
+        this.user = { ...data };
+      }, (err) => {
+        if(err.error.error === "Unauthorized"){
+          this.error = "L'email ou le mot de passe est incorrect";
+        }else{
+          this.error = "Quelque chose s’est mal passé, veuillez réessayer"
+        }
+      },
+      () => {
+        console.log("working");
+        this.router.navigate(['/welcome']);
+      }
+      );
     }
   }
 }
