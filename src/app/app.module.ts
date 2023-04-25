@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavUserConnectedComponent } from './header/nav-user-connected/nav-user-connected.component';
 import { PrimaryNavComponent } from './header/primary-nav/primary-nav.component';
 import { NavUserNotConnectedComponent } from './header/nav-user-not-connected/nav-user-not-connected.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavUserNotConnectedComponent } from './header/nav-user-not-connected/na
     NavUserConnectedComponent,
     PrimaryNavComponent,
     NavUserNotConnectedComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

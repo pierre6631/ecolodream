@@ -9,8 +9,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class UserService {
 
   usersUrl = "http://localhost:8383/api";
-  user: IUser | null = null;
-  public user$: BehaviorSubject<IUser | null> = new BehaviorSubject<IUser | null>(this.user);
+  user: IUser | undefined = undefined;
+  public user$: BehaviorSubject<IUser | undefined> = new BehaviorSubject<IUser | undefined>(this.user);
   
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -18,20 +18,20 @@ export class UserService {
     } else {
       console.error(`Backend returned code ${error.status}, body was: `, error.error);
     }
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(() => error);
   }
 
   constructor(private http: HttpClient) {
-    this.user$ = new BehaviorSubject<IUser | null>(this.user);
+    this.user$ = new BehaviorSubject<IUser | undefined>(this.user);
   }
-
   
   login(email:string, password:string){
     return this.http.post<IUser>(this.usersUrl + "/auth/login", {
       email, password
     }).pipe(
+      catchError(this.handleError),
       tap((user:IUser) =>{
-        this.user$ = new BehaviorSubject<IUser | null>(user);
+        this.user$ = new BehaviorSubject<IUser | undefined>(user);
       }),
     );
   }

@@ -2,8 +2,12 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    gap: 2vw;
     margin-bottom: 15px;
     flex-wrap: wrap;
+}
+.form-group{
+    flex: 1;
 }
 .form-action{
     width: 100%;
