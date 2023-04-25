@@ -9,6 +9,9 @@ import { SharedModule } from './shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavUserConnectedComponent } from './header/nav-user-connected/nav-user-connected.component';
+import { PrimaryNavComponent } from './header/primary-nav/primary-nav.component';
+import { NavUserNotConnectedComponent } from './header/nav-user-not-connected/nav-user-not-connected.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     EcoloComponent,
     RegisterComponent,
+    NavUserConnectedComponent,
+    PrimaryNavComponent,
+    NavUserNotConnectedComponent,
   ],
   imports: [
     BrowserModule,

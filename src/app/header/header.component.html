@@ -1,24 +1,17 @@
 <div class="header">
-    <div class="image">
+    <div class="logo">
         <img src="assets/image/Logo_AP_bandeau-3 1.png" height="100px" alt="">
     </div>
     
     <div class="bouton">
-        <div class="connect">
-            <ul>
-                <li><a routerLink="inscription">S'inscrire</a></li>
-                <li><a href="#/produits">Se connecter</a></li>
-            </ul>
+        <div *ngIf="">
+
         </div>
+
+        <app-nav-user-connected></app-nav-user-connected>
+        <app-nav-user-not-connected></app-nav-user-not-connected>
+        <app-primary-nav></app-primary-nav>
         
-        <div class="menu">
-            <ul>
-                <li><a href="#/">Accueil</a></li>
-                <li><a href="#/produits">Actualités</a></li>
-                <li><a href="#/contact">Agenda</a></li>
-                <li id="ecolo"><a href="">Deviens écolo</a></li>
-            </ul>
-        </div>
     </div>
     
 </div>
