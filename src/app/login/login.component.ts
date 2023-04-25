@@ -42,7 +42,6 @@ export class LoginComponent {
         }
       },
       () => {
-        console.log("working");
         this.router.navigate(['/welcome']);
       }
       );

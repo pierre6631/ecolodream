@@ -1,0 +1,23 @@
+$green: rgb(19, 126, 9);
+$yellow: rgb(227, 137, 5);
+$brown: rgb(128, 73, 10);
+
+
+.bg-green{
+    background-color: $green;
+}
+.green{
+    color: $green;
+}
+.bg-yellow{
+    background-color: $yellow;
+}
+.yellow{
+    color: $yellow;
+}
+.bg-brown{
+    background-color: $brown;
+}
+.brown{
+    color: $brown;
+}

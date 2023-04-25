@@ -1,17 +1,15 @@
-<div class="header">
+<div class="header bg-green">
     <div class="logo">
         <img src="assets/image/Logo_AP_bandeau-3 1.png" height="100px" alt="">
     </div>
     
-    <div class="bouton">
-        <div *ngIf="">
-
+    <div class="navs">
+        <div class="nav-top">
+            <!-- <app-nav-user-connected></app-nav-user-connected> -->
+            <app-nav-user-not-connected></app-nav-user-not-connected>
         </div>
-
-        <app-nav-user-connected></app-nav-user-connected>
-        <app-nav-user-not-connected></app-nav-user-not-connected>
-        <app-primary-nav></app-primary-nav>
-        
+        <div class="nav-bottom">
+            <app-primary-nav></app-primary-nav>
+        </div>
     </div>
-    
 </div>

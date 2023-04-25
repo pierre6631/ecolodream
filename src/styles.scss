@@ -1,13 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "colors.scss";
-@import "form.scss";
+@import "colors";
+@import "form";
 body{
     margin: 0;
 }
-.form-input{
-    padding: 1em;
-    border-radius: 25px;
-    width: 100%;
-    border: 1px solid var(--green);
-}
+
 
