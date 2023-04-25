@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { confirmPwd } from './confirmPwd';
-import { UserService } from '../user.service';
+
 import { IUser } from '../iuser';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +14,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
 
   formSubmited = false;
-
+  error = "";
   form = this.fb.group({
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
@@ -37,7 +39,7 @@ export class RegisterComponent {
   });
   user: IUser | undefined;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService : AuthService, private router: Router, private tokenStorage: TokenStorageService) {}
 
   get firstname() {
     return this.form.controls['firstname'];
@@ -57,17 +59,30 @@ export class RegisterComponent {
 
   onSubmit(): void {
     this.formSubmited = true;
-
     if(this.form.valid){
-      this.userService.addUser(
-        /*@ts-ignore*/
-        this.form.value.lastname, this.form.value.firstname, this.form.value.email, this.form.value.password
-        );
+      const { firstname, lastname, email, password } = this.form.value;
       /*@ts-ignore*/
-      this.userService.login(this.form.value.email, this.form.value.password).subscribe((data: IUser) => this.user = { ...data });
-      this.router.navigate(['/welcome']);
+      this.authService.register(firstname, lastname, email, password).subscribe({
+        next: (data) => {
+          console.log(data);
+          /*@ts-ignore*/
+          this.authService.login(email, password)
+          .subscribe({
+            next: () => {
+              this.router.navigate(['/welcome']);
+            },
+            error: (error) => {
+              this.error = error.error.message;
+            },
+          });
+        },
+        error: (error) => {
+          this.error = error.error.message;
+        }
+      });
     }
   }
+
 }
 
 

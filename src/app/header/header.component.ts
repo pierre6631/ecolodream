@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IUser } from '../iuser';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  isLogged: boolean = false;
 
+  constructor(private authService: AuthService) {
+    this.isLogged = authService.isLogged();
+  }
 }

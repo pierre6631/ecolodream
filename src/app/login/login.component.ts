@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IUser } from '../iuser';
 import { FormBuilder } from '@angular/forms';
-import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent {
 
   error: string | null = null;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {}
 
   get email() {
     return this.form.controls['email'];
@@ -30,21 +30,18 @@ export class LoginComponent {
 
   onSubmit(): void {
     if(this.form.valid){
+      const { email, password } = this.form.value;
+
       /*@ts-ignore*/
-      this.userService.login(this.form.value.email, this.form.value.password).subscribe((data: IUser) => {
-        console.log(data);
-        this.user = { ...data };
-      }, (err) => {
-        if(err.error.error === "Unauthorized"){
-          this.error = "L'email ou le mot de passe est incorrect";
-        }else{
-          this.error = "Quelque chose s’est mal passé, veuillez réessayer"
-        }
-      },
-      () => {
-        this.router.navigate(['/welcome']);
-      }
-      );
+      this.authService.login(email, password)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/ecolo']);
+        },
+        error: (error) => {
+          this.error = error;
+        },
+      });
     }
   }
 }

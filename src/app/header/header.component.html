@@ -5,8 +5,12 @@
     
     <div class="navs">
         <div class="nav-top">
-            <!-- <app-nav-user-connected></app-nav-user-connected> -->
-            <app-nav-user-not-connected></app-nav-user-not-connected>
+            <div *ngIf="isLogged">
+                <app-nav-user-connected></app-nav-user-connected>
+            </div>
+            <div *ngIf="!isLogged">
+                <app-nav-user-not-connected></app-nav-user-not-connected>
+            </div>   
         </div>
         <div class="nav-bottom">
             <app-primary-nav></app-primary-nav>
