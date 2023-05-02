@@ -11,6 +11,8 @@ export class HeaderComponent {
   isLogged: boolean = false;
 
   constructor(private authService: AuthService) {
-    this.isLogged = authService.isLogged();
+    this.authService.user$.subscribe((user) => {
+      this.isLogged = !!user;
+    })
   }
 }

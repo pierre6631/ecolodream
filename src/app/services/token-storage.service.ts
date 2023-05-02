@@ -19,7 +19,19 @@ export class TokenStorageService {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public getUser(): string | null {
-    return localStorage.getItem(USER_KEY);
+  public getUser(): IUser | null {
+    let user = localStorage.getItem(USER_KEY);
+    if(user){
+      return JSON.parse(user);
+    }
+    return null;
+  }
+
+  public getToken(): string | null{
+    let user = this.getUser();
+    if(user){
+      return user.token
+    }
+    return null;
   }
 }

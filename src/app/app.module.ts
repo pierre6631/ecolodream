@@ -13,6 +13,7 @@ import { NavUserConnectedComponent } from './header/nav-user-connected/nav-user-
 import { PrimaryNavComponent } from './header/primary-nav/primary-nav.component';
 import { NavUserNotConnectedComponent } from './header/nav-user-not-connected/nav-user-not-connected.component';
 import { LoginComponent } from './login/login.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { LoginComponent } from './login/login.component';
     NavUserConnectedComponent,
     PrimaryNavComponent,
     NavUserNotConnectedComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { LoginComponent } from './login/login.component';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

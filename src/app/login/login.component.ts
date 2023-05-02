@@ -39,7 +39,11 @@ export class LoginComponent {
           this.router.navigate(['/ecolo']);
         },
         error: (error) => {
-          this.error = error;
+          if(error.statut === 401){
+            this.error = "Les identifiants ne sont pas correct"
+          }else{
+            this.error = "Quelque chose s'est mal passé, veuillez réessayer"
+          }
         },
       });
     }

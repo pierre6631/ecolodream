@@ -35,7 +35,7 @@ export class RegisterComponent {
       updateOn: 'blur'
     }],
 
-    passwordConfirm: ['', {validators:[Validators.required, confirmPwd('password')], updateOn: 'blur'}]
+    passwordConfirm: ['', {validators:[Validators.required, confirmPwd('password')]}]
   });
   user: IUser | undefined;
 

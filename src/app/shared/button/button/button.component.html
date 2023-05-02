@@ -1,3 +1,4 @@
-<button class="button bg-{{color}}" [disabled]="disabled" >
+<button class="button bg-{{color}}" [disabled]="disabled">
+    <mat-icon *ngIf=icon aria-hidden="false" [fontIcon]=icon></mat-icon>
     <ng-content></ng-content>
 </button>

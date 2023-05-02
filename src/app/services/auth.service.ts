@@ -16,18 +16,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  private userSubject: BehaviorSubject<IUser>;
-  public user: Observable<IUser>;
+  private user: IUser;
+  public user$: BehaviorSubject<IUser>;
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private router: Router) { 
-    this.userSubject = new BehaviorSubject<IUser>(
-      JSON.parse(localStorage.getItem('currentUser') || '{}')
-    );
-    this.user = this.userSubject.asObservable();
+    this.user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.user$ = new BehaviorSubject<IUser>(this.user);
   }
 
   public get userValue(): IUser {
-    return this.userSubject.value;
+    return this.user;
   }
 
   isLogged(){
@@ -51,7 +49,8 @@ export class AuthService {
           created_at: data.user.created_at
         };
         this.tokenStorage.saveUser(user);
-        this.userSubject.next(user);
+        this.user = user;
+        this.user$.next(this.user);
         return user;
       }));
   }
@@ -64,6 +63,7 @@ export class AuthService {
 
   logout() {
     this.tokenStorage.removeUser();
-    this.userSubject.next(null!);
+    this.user$.next(null!);
+    return this.http.post<any>(apiUrl + '/auth/logout', httpOptions);
   }
 }

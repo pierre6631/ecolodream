@@ -1,5 +1,13 @@
 .button{
     padding: 0.5em 2em;
     border-radius: 15px;
+    border: none;
     color: white;
+    mat-icon{
+        margin-right: 0.25rem;
+        vertical-align: -0.45rem;
+    }
+    &:hover{
+        cursor: pointer;
+    }
 }
