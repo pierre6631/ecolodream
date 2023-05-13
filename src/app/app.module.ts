@@ -14,6 +14,8 @@ import { PrimaryNavComponent } from './header/primary-nav/primary-nav.component'
 import { NavUserNotConnectedComponent } from './header/nav-user-not-connected/nav-user-not-connected.component';
 import { LoginComponent } from './login/login.component';
 import {MatIconModule} from '@angular/material/icon';
+import { ChallengeComponent } from './ecolo/challenge/challenge.component';
+import { ReviewComponent } from './ecolo/review/review.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {MatIconModule} from '@angular/material/icon';
     NavUserConnectedComponent,
     PrimaryNavComponent,
     NavUserNotConnectedComponent,
-    LoginComponent
+    LoginComponent,
+    ChallengeComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

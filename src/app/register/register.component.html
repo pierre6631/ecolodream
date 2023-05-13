@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <input class="form-input" type="password" formControlName="passwordConfirm" placeholder="Confirmer">
-                <div  class="form-error" *ngIf="passwordConfirm.errors?.['confirmPwd']">
+                <div  class="form-error" *ngIf="passwordConfirm.errors?.['pwdInvalid']">
                     Les mots de passe ne correspondent pas.
                 </div>
             </div>
