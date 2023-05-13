@@ -6,6 +6,7 @@ import { IUser } from '../iuser';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { TokenStorageService } from '../services/token-storage.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -39,7 +40,7 @@ export class RegisterComponent {
   });
   user: IUser | undefined;
 
-  constructor(private fb: FormBuilder, private authService : AuthService, private router: Router, private tokenStorage: TokenStorageService) {}
+  constructor(private fb: FormBuilder, private authService : AuthService, private router: Router, private tokenStorage: TokenStorageService, private spinner: NgxSpinnerService) {}
 
   get firstname() {
     return this.form.controls['firstname'];
@@ -60,6 +61,7 @@ export class RegisterComponent {
   onSubmit(): void {
     this.formSubmited = true;
     if(this.form.valid){
+      this.spinner.show();
       const { firstname, lastname, email, password } = this.form.value;
       /*@ts-ignore*/
       this.authService.register(firstname, lastname, email, password).subscribe({
@@ -72,11 +74,13 @@ export class RegisterComponent {
               this.router.navigate(['/welcome']);
             },
             error: (error) => {
+              this.spinner.hide();
               this.error = error.error.message;
             },
           });
         },
         error: (error) => {
+          this.spinner.hide();
           this.error = error.error.message;
         }
       });

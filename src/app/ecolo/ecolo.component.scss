@@ -1,0 +1,17 @@
+.title{
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+.categories{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.category{
+    flex: 1 31%;
+    max-width: 30%;
+}

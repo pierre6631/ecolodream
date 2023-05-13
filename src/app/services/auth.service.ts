@@ -20,19 +20,12 @@ export class AuthService {
   public user$: BehaviorSubject<IUser>;
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private router: Router) { 
-    this.user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    this.user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     this.user$ = new BehaviorSubject<IUser>(this.user);
   }
 
   public get userValue(): IUser {
     return this.user;
-  }
-
-  isLogged(){
-    if(this.tokenStorage.getUser()){
-      return true;
-    }
-    return false;
   }
   
   login(email: string, password: string): Observable<any> {

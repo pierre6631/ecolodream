@@ -3,6 +3,7 @@ import { IUser } from '../iuser';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
 
   error: string | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private spinner: NgxSpinnerService) {}
 
   get email() {
     return this.form.controls['email'];
@@ -31,7 +32,7 @@ export class LoginComponent {
   onSubmit(): void {
     if(this.form.valid){
       const { email, password } = this.form.value;
-
+      this.spinner.show();
       /*@ts-ignore*/
       this.authService.login(email, password)
       .subscribe({
@@ -39,7 +40,10 @@ export class LoginComponent {
           this.router.navigate(['/ecolo']);
         },
         error: (error) => {
-          if(error.statut === 401){
+          this.spinner.hide();
+          console.log(error.status);
+          console.log(error);
+          if(error.status === 401){
             this.error = "Les identifiants ne sont pas correct"
           }else{
             this.error = "Quelque chose s'est mal passé, veuillez réessayer"

@@ -18,6 +18,8 @@ import { ChallengeComponent } from './ecolo/category/challenge/challenge.compone
 import { ReviewComponent } from './ecolo/category/review/review.component';
 import { CategoryComponent } from './ecolo/category/category.component';
 import { HomeComponent } from './home/home.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,13 @@
 .card{
-    padding: 3em;
-    width: fit-content;
-    display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 5px;
     box-shadow: 2px 4px 9px 3px rgba(0,0,0,0.41);
+    display: flex;
+}
+
+.card-body{
+    padding: 2em;
+    width: 100%;
 }
