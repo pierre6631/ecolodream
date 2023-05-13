@@ -14,8 +14,10 @@ import { PrimaryNavComponent } from './header/primary-nav/primary-nav.component'
 import { NavUserNotConnectedComponent } from './header/nav-user-not-connected/nav-user-not-connected.component';
 import { LoginComponent } from './login/login.component';
 import {MatIconModule} from '@angular/material/icon';
-import { ChallengeComponent } from './ecolo/challenge/challenge.component';
-import { ReviewComponent } from './ecolo/review/review.component';
+import { ChallengeComponent } from './ecolo/category/challenge/challenge.component';
+import { ReviewComponent } from './ecolo/category/review/review.component';
+import { CategoryComponent } from './ecolo/category/category.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ReviewComponent } from './ecolo/review/review.component';
     NavUserNotConnectedComponent,
     LoginComponent,
     ChallengeComponent,
-    ReviewComponent
+    ReviewComponent,
+    CategoryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

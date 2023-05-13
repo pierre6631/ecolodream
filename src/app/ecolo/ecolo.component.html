@@ -1,6 +1,22 @@
-<p>ecolo works!</p>
-<p>ecolo works!</p>
-<p>ecolo works!</p>
-<p>ecolo works!</p>
-<p>ecolo works!</p>
+<div class="container">
+    <p>
+        Vous trouverez ici tous les challenges et les critiques bonnes ou mauvaises pour certaines 
+        institutions ou entreprises. Pour avoir accès à toutes les fonctionnalités, gagner des points, 
+        challenge journaliers, commenter et réagir avec la communauté 
+        et bien plus encore je vous invite à vous connecter ou à vous inscrire.
+    </p>
+    
+    <app-button color="green">Se connecter</app-button> <app-button color="green">S'inscrire</app-button>
+
+    <div *ngIf="categories && categories.length > 0">
+        <div *ngFor="let category of categories">
+            <app-card>{{ category.label }}</app-card>
+        </div>
+    </div>
+
+</div>
+
+
+
+
 
