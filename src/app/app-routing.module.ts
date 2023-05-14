@@ -5,12 +5,14 @@ import { EcoloComponent } from './ecolo/ecolo.component';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { CategoryComponent } from './ecolo/category/category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'inscription', component: RegisterComponent },
   { path: 'connexion', component:  LoginComponent},
   { path: 'ecolo', component:  EcoloComponent},
+  { path: 'ecolo/categories/:id', component:  CategoryComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

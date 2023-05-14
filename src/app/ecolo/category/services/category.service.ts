@@ -6,10 +6,6 @@ import { Observable, catchError, map, tap } from 'rxjs';
 
 
 const apiUrl = environment.apiUrl;
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
   
 @Injectable({
   providedIn: 'root'
@@ -20,6 +16,12 @@ export class CategoryService {
 
   getCategories(): Observable<ICategory[]> {
     return this.http.get<{ data: ICategory[] }>(apiUrl + '/categories').pipe(
+      map(response => response.data)
+    );
+  }
+
+  getCategory(id:number): Observable<ICategory> {
+    return this.http.get<{ data: ICategory }>(apiUrl + '/categories/'+id).pipe(
       map(response => response.data)
     );
   }

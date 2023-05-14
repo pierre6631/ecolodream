@@ -1,16 +1,22 @@
 <div class="container">
-    <p>
-        Vous trouverez ici tous les challenges et les critiques bonnes ou mauvaises pour certaines 
-        institutions ou entreprises. Pour avoir accès à toutes les fonctionnalités, gagner des points, 
-        challenge journaliers, commenter et réagir avec la communauté 
-        et bien plus encore je vous invite à vous connecter ou à vous inscrire.
-    </p>
+    <div class="center">
+        <p class="justify">
+            Cher/e Ecolodreamer ! Vous trouverez ici de multiples challenges écolos ,personnels ou collectifs, avec
+                lesquels vous gagnerez des points et dont l’accès est restreint aux inscrits, ainsi qu’une série de conseils et
+                critiques écolos visibles pour tous ! Via une sélection d’institutions, d’entreprises à éviter et leurs
+                alternatives et, pour les inscrits, des défis journaliers supplémentaires, améliorez votre mode de vie de
+                façon à le rendre plus responsable et sain! Participez à un mouvement aussi écologique qu’humanitaire
+                visant à préserver notre tendre planète et tous les êtres vivants l’habitant ! Vous pouvez également
+                commenter et interagir à votre guise avec notre communauté, alors ne perdez pas une seconde et
+                inscrivez-vous ou connectez-vous afin d’avoir accès à la totalité de nos fonctionnalités !
+        </p>
+        
+        <app-button color="green">Se connecter</app-button>&nbsp;&nbsp;&nbsp;&nbsp;<app-button color="green">S'inscrire</app-button>
+    </div>
     
-    <app-button color="green">Se connecter</app-button> <app-button color="green">S'inscrire</app-button>
-
     <div class="categories" *ngIf="categories && categories.length > 0">
         <div class="category" *ngFor="let category of categories">
-            <app-card>
+            <app-card (click)="goCategory(category.id)">
                 <img  src="assets/image/405x300.png" alt="" header>
                 <div content>
                     <div class="title green">{{ category.label }}</div> 

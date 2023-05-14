@@ -1,0 +1,21 @@
+.title{
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+.challenges{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.challenge{
+    flex: 1 31%;
+    max-width: 30%;
+    cursor: pointer;
+}
+.categorie{
+    text-align: center;
+}
